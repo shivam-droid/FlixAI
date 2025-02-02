@@ -1,17 +1,25 @@
 import React, { useRef } from "react";
 import Header from "./Header";
 import { checkValidateData } from "../utils/validate";
-import { account } from "../appwrite/appwriteConfig.js";
-import { v4 as uuidv4 } from "uuid";
+import useSignup from "../appwrite/useSignup.js";
+import useSignin from "../appwrite/useSignin.js";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+  //Hooks
+  const navigate = useNavigate();
+  const {signupUser} = useSignup();
+  const {signinUser} = useSignin();
   const [isSignIn, setIsSignIn] = React.useState(true);
   const [errorMessage, setErrorMessage] = React.useState(null);
+
+  //values
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
 
-  const handleSubmitButton = () => {
+  const handleSubmitButton = async () => {
     const message = checkValidateData(
       email.current.value,
       password.current.value
@@ -21,38 +29,13 @@ const Login = () => {
       return;
     }
     if (!isSignIn) {
-      //sign up logic
-      try {
-        account
-          .create(uuidv4(), email.current.value, password.current.value,name.current.value)
-          .then(
-            (response) => {
-              console.log(response);
-            },
-            (error) => {
-              setErrorMessage(error.message);
-              console.log(error);
-            }
-          );
-      } catch (error) {
-        throw error;
-      }
+      signupUser(email.current.value,password.current.value,name.current.value);
+      navigate('/browse');    
     }
     if (isSignIn) {
-      // signin logic
-      try {
-        account.createEmailPasswordSession(email.current.value, password.current.value).then(
-          (response) => {
-            console.log(response);
-          },
-          (error) => {
-            setErrorMessage(error.message);
-            console.log(error);
-          }
-        );
-      } catch (error) {
-        throw error;
-      }
+      signinUser(email.current.value,password.current.value);
+      navigate('/browse'); 
+      
     }
   };
 
