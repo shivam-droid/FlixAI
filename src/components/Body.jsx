@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import Login from "./Login.jsx";
 import Browse from "./Browse.jsx";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice.js";
 
 const Body = () => {
     const dispatch = useDispatch();
+    const user = useSelector(state=>state.user);
     const appRouter = createBrowserRouter([
         {
         path: "/",
-        element: <Login />,
+        element: user ? <Navigate to="/browse" /> : <Login />,
         },
         {
         path: "/browse",
-        element: <Browse />,
+        element: <Browse />
         },
     ]);
 

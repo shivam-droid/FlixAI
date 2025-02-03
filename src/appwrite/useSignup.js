@@ -16,7 +16,7 @@ const useSignup = () => {
 
       // Step 3: Update user preferences (ONLY after session is active)
       await account.updatePrefs({
-        profilePic: `https://avatar.iran.liara.run/username?username=${name}`,
+        profilePic: `https://avatar.iran.liara.run/public/boy?username=${name}`,
       });
 
       // Step 4: Fetch user details to verify session
@@ -31,6 +31,8 @@ const useSignup = () => {
           pic: prefs?.profilePic || "",
         })
       );
+      localStorage.setItem("user",JSON.stringify({email, name, pic: prefs?.profilePic || ""}));
+      
     } catch (error) {
       console.error("Signup Error:", error.message);
     }
