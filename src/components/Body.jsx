@@ -15,7 +15,7 @@ const Body = () => {
         },
         {
         path: "/browse",
-        element: <Browse />
+        element: user ? <Browse /> : <Navigate to='/' />
         },
     ]);
 
