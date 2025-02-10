@@ -9,7 +9,12 @@ const useSignup = () => {
   const signupUser = async (email, password, name) => {
     try {
       // Step 1: Create user account
-      await account.create(uuidv4(), email, password, name);
+      try {
+        const user = await account.create(uuidv4(), email, password, name);
+        console.log("User created successfully:", user);
+      } catch (error) {
+        console.error("Signup failed:", error);
+      }
 
       // Step 2: Create a session (IMPORTANT)
       await account.createEmailPasswordSession(email, password);
