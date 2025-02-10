@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import Header from "./Header";
-import { checkValidateData } from "../utils/validate";
-import useSignup from "../appwrite/useSignup.js";
-import useSignin from "../appwrite/useSignin.js";
+import Header from "./Header.jsx";
+import { checkValidateData } from "../../utils/validate.js";
+import useSignup from "../../hooks/useSignup.js";
+import useSignin from "../../hooks/useSignin.js";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {

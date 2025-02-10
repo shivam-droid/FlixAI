@@ -1,5 +1,5 @@
 import React from 'react'
-import { account } from './appwriteConfig'
+import { account } from '../appwrite/appwriteConfig'
 import { useDispatch } from 'react-redux'
 import { removeUser } from '../utils/userSlice'
 import { useNavigate } from 'react-router-dom'

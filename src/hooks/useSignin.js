@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { account } from "./appwriteConfig";
+import { account } from "../appwrite/appwriteConfig";
 import { addUser } from "../utils/userSlice";
 
 const useSignin = () => {

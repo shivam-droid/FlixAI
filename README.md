@@ -12,6 +12,7 @@ FlixAI is a modern movie browsing application built using React and Tailwind CSS
 - **Form Validation**: Ensures the user inputs are valid before submission.
 - **Appwrite Authentication**: Secure user login and registration using Appwrite's backend service. and created custom Hooks for signup/signin
 - **Redux-Toolkit**: created appStore using redux to store user data after signup or signin
+- used TMDB site for movie database
   
 ### 🍿 Browse Movies (After Authentication)
 

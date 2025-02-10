@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { useSelector } from "react-redux";
-import useSignout from "../appwrite/useSignout";
+import useSignout from "../../hooks/useSignout";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
   }
 
   return (
-    <div className="absolute z-30 w-screen flex items-center px-10 justify-between ">
+    <div className="absolute z-30 w-full px-10 flex items-center justify-between bg-black">
       <div className="w-60 py-4 px-8 ">
         <img
           src={logo}
